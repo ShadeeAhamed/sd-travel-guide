@@ -1,0 +1,78 @@
+name: tourist_guide
+description: Smart Tourism Guide App with AI Translator
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.2.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # UI
+  cupertino_icons: ^1.0.8
+  google_fonts: ^6.2.1
+  animations: ^2.0.11
+  lottie: ^3.1.2
+  iconsax: ^0.0.8
+
+  # Maps
+  flutter_map: ^8.2.2
+  latlong2: ^0.9.1
+
+  # Location & Permissions
+  geolocator: ^14.0.2
+  permission_handler: ^12.0.1
+
+  # Connectivity
+  connectivity_plus: ^6.1.5
+
+  # Voice
+  speech_to_text: ^7.3.0
+  flutter_tts: ^4.2.3
+
+  # Local Database (Offline)
+  sqflite: ^2.4.2
+  path: ^1.9.1
+  path_provider: ^2.1.5
+
+  # API
+  http: ^1.2.0
+  url_launcher: ^6.3.0
+  crypto: ^3.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/branding/
+    - assets/lottie/
+    - assets/maps/sri_lanka_tiles_osm/
+    - assets/places/
+    - assets/places/anuradhapura/
+    - assets/places/arugam_bay/
+    - assets/places/bentota/
+    - assets/places/colombo/
+    - assets/places/dambulla/
+    - assets/places/sigiriya/
+    - assets/places/ella/
+    - assets/places/galle/
+    - assets/places/hikkaduwa/
+    - assets/places/horton_plains/
+    - assets/places/jaffna/
+    - assets/places/kandy/
+    - assets/places/mirissa/
+    - assets/places/nuwara_eliya/
+    - assets/places/pidurangala/
+    - assets/places/polonnaruwa/
+    - assets/places/trincomalee/
+    - assets/places/udawalawe/
+    - assets/places/unawatuna/
+    - assets/places/yala_national_park/

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SD Travel Guide Admin</title>
+    <link rel="stylesheet" href="/dashboard/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand-card">
+          <img
+            src="/dashboard/logo-mark.svg"
+            alt="SD Travel Guide"
+            class="brand-mark"
+          />
+          <div>
+            <div class="brand-title">SD Travel Guide</div>
+            <div class="brand-subtitle">Control Center</div>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button class="nav-item active" data-section="overview">Overview</button>
+          <button class="nav-item" data-section="users">Users</button>
+          <button class="nav-item" data-section="places">Places</button>
+          <button class="nav-item" data-section="safety">Safety</button>
+          <button class="nav-item" data-section="analytics">Analytics</button>
+          <button class="nav-item" data-section="database">Database</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <label class="small-label" for="adminKeyInput">Admin key</label>
+          <input
+            id="adminKeyInput"
+            type="password"
+            placeholder="Enter admin key"
+          />
+          <button id="saveAdminKeyBtn" class="ghost-button">Save key</button>
+          <p class="microcopy">
+            Local development key default: <strong>dev-admin-key</strong>
+          </p>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <h1>Operations dashboard</h1>
+            <p>Watch customers, content, safety, and product activity in one place.</p>
+            <div class="link-row">
+              <a href="/dashboard" target="_self">Dashboard</a>
+              <a href="/admin" target="_self">Admin view</a>
+              <a href="/dashboard#database" target="_self">Database view</a>
+            </div>
+          </div>
+          <button id="refreshAllBtn" class="primary-button">Refresh data</button>
+        </header>
+
+        <section id="overviewSection" class="content-section active">
+          <div id="overviewStats" class="stat-grid"></div>
+          <div class="panel-grid">
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Top events</h2>
+              </div>
+              <div id="topEventsList" class="list-stack"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Top place searches</h2>
+              </div>
+              <div id="topSearchesList" class="list-stack"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="usersSection" class="content-section">
+          <section class="panel">
+            <div class="panel-header">
+              <h2>Traveler accounts</h2>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Personality</th>
+                    <th>Premium</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="usersTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section id="placesSection" class="content-section">
+          <div class="panel-grid">
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Places manager</h2>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Region</th>
+                      <th>Featured</th>
+                      <th>Budget</th>
+                    </tr>
+                  </thead>
+                  <tbody id="placesTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Add or update place</h2>
+              </div>
+              <form id="placeForm" class="stack-form">
+                <input name="name" placeholder="Place name" required />
+                <input name="type" placeholder="Type" required />
+                <input name="region" placeholder="Region" required />
+                <input name="bestTime" placeholder="Best time" required />
+                <input name="budgetLevel" placeholder="Budget level" required />
+                <div class="inline-grid">
+                  <input name="lat" type="number" step="0.0001" placeholder="Latitude" />
+                  <input name="lng" type="number" step="0.0001" placeholder="Longitude" />
+                </div>
+                <label class="checkbox-row">
+                  <input name="featured" type="checkbox" />
+                  <span>Featured place</span>
+                </label>
+                <button type="submit" class="primary-button">Save place</button>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <section id="safetySection" class="content-section">
+          <div class="panel-grid">
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Safety alerts</h2>
+              </div>
+              <div id="safetyAlertsList" class="alert-list"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Publish alert</h2>
+              </div>
+              <form id="alertForm" class="stack-form">
+                <input name="title" placeholder="Alert title" required />
+                <input name="zone" placeholder="Zone or area" required />
+                <select name="severity">
+                  <option value="low">Low</option>
+                  <option value="medium">Medium</option>
+                  <option value="high">High</option>
+                </select>
+                <textarea
+                  name="message"
+                  rows="5"
+                  placeholder="Alert message"
+                  required
+                ></textarea>
+                <button type="submit" class="primary-button">Post alert</button>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <section id="analyticsSection" class="content-section">
+          <div class="panel-grid">
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Event summary</h2>
+              </div>
+              <div id="analyticsSummaryList" class="list-stack"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Recent events</h2>
+              </div>
+              <div id="recentEventsList" class="list-stack"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="databaseSection" class="content-section">
+          <div class="panel-grid">
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Database snapshot</h2>
+              </div>
+              <div id="databaseMeta" class="list-stack"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-header">
+                <h2>Collection data</h2>
+              </div>
+              <pre id="databaseDump" class="code-block"></pre>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/dashboard/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "sd-travel-guide-platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "SD Travel Guide backend platform and admin dashboard starter",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

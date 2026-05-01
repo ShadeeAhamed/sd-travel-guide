@@ -1,0 +1,1 @@
+Sample offline tiles (OSM style) for zooms 5-8. Replace with full tiles for production.
