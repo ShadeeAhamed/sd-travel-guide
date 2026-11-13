@@ -1,113 +1,96 @@
 # SD Travel Guide
 
-Sri Lanka travel super app built with Flutter.
+A Flutter application focused on helping visitors explore Sri Lanka through destination discovery, maps, travel phrases, voice interaction and trip-planning interfaces.
 
-SD Travel Guide combines AI travel help, dynamic itinerary planning, translation, tourist maps, place discovery, safety tools, and budget tracking into one mobile experience for travelers visiting Sri Lanka.
+> **Project status:** Academic/personal project in active development. This README separates code-backed functionality from optional services and future ideas so that the project is easy to assess accurately.
 
 ## Screenshots
 
-| Splash | Discover |
+| Home | AI assistant interface |
 |---|---|
-| ![Splash](docs/screenshots/splash.jpg) | ![Home](docs/screenshots/home.jpg) |
+| ![Home screen](docs/screenshots/home.jpg) | ![Assistant screen](docs/screenshots/ai.jpg) |
 
-| AI Assistant | Travel Wallet |
+| Splash | Travel wallet |
 |---|---|
-| ![AI Assistant](docs/screenshots/ai.jpg) | ![Wallet](docs/screenshots/wallet.jpg) |
+| ![Splash screen](docs/screenshots/splash.jpg) | ![Wallet screen](docs/screenshots/wallet.jpg) |
 
-## Highlights
+## Implemented components
 
-- Sri Lanka-focused AI travel assistant
-- Dynamic itinerary builder with editable destinations
-- Online/offline map experience
-- Sinhala, Tamil, and English travel translation
-- Detailed tourist places explorer
-- Safety help and offline survival tools
-- Travel wallet and budget tracking
-- Auth, OTP, profile, and admin/backend foundation
+- Flutter and Dart mobile application structure.
+- Sri Lanka destination and place content.
+- Map interface using `flutter_map` and `latlong2`.
+- Device location support through `geolocator`.
+- Voice input and text-to-speech packages.
+- Local SQLite storage foundation.
+- A phrase-based English/Sinhala/Tamil travel translator for a curated set of common phrases.
+- Nearby-place filtering using geographic distance calculations.
+- Travel assistant interface with an optional Python backend endpoint for OpenAI-powered responses when a backend API key is configured.
 
-## Features
+## Technology
 
-### 1. AI Travel Assistant
-- Answers local travel questions with Sri Lanka-aware guidance
-- Supports practical prompts like destination + budget + group size + food preference
-- Uses local guide data first and can extend to a live backend
-
-### 2. Dynamic Itinerary Builder
-- Builds day plans from traveler mood and profile
-- Lets users swap destinations, for example `Colombo -> Nuwara Eliya`
-- Includes route hints, food guidance, and budget feel
-
-### 3. Smart Map
-- Tourist destination markers
-- Online/offline switching
-- Search and route-focused travel UI
-
-### 4. Translator
-- Travel-oriented Sinhala, Tamil, and English translation
-- Voice workflow support for tourism use cases
-
-### 5. Places Explorer
-- Curated Sri Lanka destination catalog
-- Detailed place guidance, gallery support, and visit-plan style content
-
-### 6. Safety and Offline Support
-- Offline survival guide
-- Emergency phrase pack
-- Fair travel price guidance
-
-### 7. Travel Wallet
-- Daily budget overview
-- Category-based expense breakdown
-- Quick-add spend actions
-
-## Tech Stack
-
-- **Frontend:** Flutter, Dart
-- **Maps:** `flutter_map`, `latlong2`
-- **Location:** `geolocator`
+- **Mobile:** Flutter, Dart
+- **Maps & location:** `flutter_map`, `latlong2`, `geolocator`
 - **Voice:** `speech_to_text`, `flutter_tts`
-- **Local storage:** SQLite via `sqflite`
+- **Local storage:** `sqflite`
 - **Networking:** `http`
-- **Backend foundation:** Node.js admin/platform starter + local AI/translation backend
+- **Optional assistant backend:** Python standard library HTTP server and OpenAI Responses API
 
-## Project Structure
+## Project structure
 
 ```text
-lib/        Flutter app source
-assets/     Branding, place media, offline map assets
-backend/    Translation backend + admin/platform backend starter
-docs/       Architecture notes, API contracts, GitHub docs, screenshots
-tool/       Local helper scripts
+lib/        Flutter application source
+assets/     Branding, place media and offline map assets
+backend/    Optional translation and AI chat backend
+docs/       Architecture notes, API notes and screenshots
+test/       Flutter widget tests
+tool/       Project helper scripts
 ```
 
-## Run Locally
+## Run the Flutter app
+
+Install the Flutter SDK, then run:
 
 ```bash
 flutter pub get
+flutter analyze
+flutter test
 flutter run
 ```
 
-### Optional backend helpers
+## Optional Python backend
 
-- `backend/translation_server.py` for local AI/translation support
-- `backend/platform/` for auth/admin/dashboard foundation
+The backend exposes a health endpoint, a phrase-translation endpoint and an optional AI chat endpoint.
 
-## Product Direction
+```bash
+python backend/translation_server.py
+```
 
-SD Travel Guide is being developed toward a tourism super app with:
+For AI chat, configure the key on the backend machine only:
 
-- smarter Sri Lanka travel planning
-- stronger offline survival support
-- tourist-safe transport guidance
-- richer destination intelligence
-- better AI-assisted decision support
+```bash
+export OPENAI_API_KEY="your_api_key"
+export OPENAI_MODEL="gpt-5-mini"
+python backend/translation_server.py
+```
 
-## Repository Notes
+On Windows PowerShell:
 
-- This repository currently includes large local media assets for destination galleries.
-- A later optimization pass can shrink image sizes and reduce repository weight further without changing the app concept.
+```powershell
+$env:OPENAI_API_KEY="your_api_key"
+$env:OPENAI_MODEL="gpt-5-mini"
+python backend\translation_server.py
+```
 
-## CV-Friendly Summary
+Never commit API keys or place private keys in Flutter/mobile code. The phrase translator has a limited curated vocabulary; it is not a general-purpose machine translation model.
 
-**SD Travel Guide**  
-Flutter-based Sri Lanka tourism app featuring AI travel assistance, dynamic itinerary planning, translation, smart maps, safety tools, and budget tracking.
+## Current limitations and next steps
+
+- Expand and validate the travel phrase dataset with native-speaker review.
+- Add automated tests for translation matching and nearby-place distance calculations.
+- Document the actual backend deployment and environment configuration before describing it as production-ready.
+- Add a verified app demonstration or release build when available.
+- Keep future ideas (such as advanced itinerary intelligence and production authentication) clearly labelled until implemented and tested.
+
+## Learning and contribution notes
+
+This repository is intended to demonstrate application development, integration of mobile capabilities and iterative project work. Screenshots show the current interface; optional backend functionality depends on local configuration and credentials.
