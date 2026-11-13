@@ -86,5 +86,5 @@ The platform/backend foundation is documented separately and includes:
 
 See:
 
-- [backend/platform/README.md](</C:/Users/U S E R/tourist_guide/backend/platform/README.md>)
-- [docs/sd_travel_guide_admin_stack.md](</C:/Users/U S E R/tourist_guide/docs/sd_travel_guide_admin_stack.md>)
+- [backend/platform/README.md](platform/README.md)
+- [docs/sd_travel_guide_admin_stack.md](../docs/sd_travel_guide_admin_stack.md)
